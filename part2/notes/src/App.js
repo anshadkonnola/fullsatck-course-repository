@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 import noteService from './services/notes'
 
 const App = () => {
-  const [notes, setNotes] = useState([])
+  const [notes, setNotes] = useState(null)
   const [newNote, setNewNote] = useState('a new note...') 
   const [showAll, setShowAll] = useState(true)
   const [errorMessage, setErrorMessage] = useState(null)
@@ -18,7 +18,6 @@ const App = () => {
       })
   }, [])
   
-  console.log('render', notes.length, 'notes')
 
   const addNote = (event) => {    
     event.preventDefault()    
@@ -29,7 +28,7 @@ const App = () => {
     noteService
       .create(noteObject)
       .then(returnedNote => {
-        setNotes(notes.concat(returnedNote))
+        setNotes(returnedNote)
         setNewNote('')
       })
   }
@@ -57,6 +56,10 @@ const App = () => {
   const handleNoteChange = (event) => {
     console.log(event.target.value)
     setNewNote(event.target.value)
+  }
+
+  if (notes === null) {
+    return null
   }
 
   const notesToShow = showAll

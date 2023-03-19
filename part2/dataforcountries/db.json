@@ -1,0 +1,21 @@
+{
+  "App": {
+    "posts": [
+      {
+        "id": 1,
+        "title": "json-server",
+        "author": "anshad"
+      }
+    ],
+    "comments": [
+      {
+        "id": 1,
+        "body": "data of countries",
+        "postId": 1
+      }
+    ],
+    "profile": {
+      "name": "anshad"
+    }
+  }
+}
