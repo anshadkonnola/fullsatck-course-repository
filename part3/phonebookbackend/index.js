@@ -1,4 +1,6 @@
 const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
 const morgan = require('morgan');
 const app = express();
 
@@ -25,8 +27,10 @@ let phonebook = [
     }
 ];
 
+app.use(cors());
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :content'));
 app.use(express.json());
+app.use(express.static('build'));
 
 morgan.token('content', (request) =>
   request.method === 'POST' && request.body.name
@@ -35,7 +39,7 @@ morgan.token('content', (request) =>
 )
 
 app.get('/', (request, response) => {
-    response.send('<h1>Hello World!</h1>');
+    response.sendFile('./build/index.html');
 });
 
 app.get('/api/persons', (request, response) => {
