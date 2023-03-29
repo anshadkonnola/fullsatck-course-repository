@@ -91,6 +91,21 @@ app.post('/api/notes', (request, response) => {
     response.json(note);
 });
 
+app.put('/api/notes/:id', (request, response) => {
+    const id = Number(request.params.id);
+    const body = request.body;
+
+    const updatedNote = {
+        content: body.content,
+        important: body.important,
+        id: generateId()
+    };
+
+    notes = notes.map(note => note.id !== id ? note : updatedNote);
+
+    response.json(updatedNote);
+});
+
 app.use(unknownEndpoint);
 
 

@@ -28,7 +28,7 @@ const App = () => {
     noteService
       .create(noteObject)
       .then(returnedNote => {
-        setNotes(returnedNote)
+        setNotes([...notes, returnedNote])
         setNewNote('')
       })
   }
