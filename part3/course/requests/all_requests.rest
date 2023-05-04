@@ -5,7 +5,7 @@ POST http://localhost:3001/api/notes/ HTTP/1.1
 content-type: application/json
     
 {    
-    "content": "vs code rest clietn is a pretty handy tool",    
+    "content": "min 5 chars",    
     "important": true
 }
 
