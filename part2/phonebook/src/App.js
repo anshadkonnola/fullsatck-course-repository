@@ -72,11 +72,24 @@ function App() {
           })   
         return
       }
+      setNewName('')
+      setNewNumber('')
+      return
     }
+
     personService
       .create(personObject)
       .then(returnedPerson => {
         setPersons(persons.concat(returnedPerson))
+        setNotification({
+          text: `${personObject.name} added to the phonebook.`,
+          type: 'notification'
+        })
+        setTimeout(() => {
+          setNotification(null)
+        }, 5000)
+        setNewName('')
+        setNewNumber('')
       })
       .catch(error => {
         setNotification({
@@ -87,15 +100,6 @@ function App() {
           setNotification(null)
         }, 5000)
       })
-    setNotification({
-      text: `${personObject.name} added to the phonebook.`,
-      type: 'notification'
-    })
-    setTimeout(() => {
-      setNotification(null)
-    }, 5000)
-    setNewName('')
-    setNewNumber('')
   }
 
   const deletePerson = (id) => {

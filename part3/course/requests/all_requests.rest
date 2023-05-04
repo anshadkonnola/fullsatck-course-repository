@@ -11,3 +11,7 @@ content-type: application/json
 
 ###
 DELETE http://localhost:3001/api/notes/6450a1f7f1b81ef2f8f4aace
+
+###
+DELETE https://render-test-eq6k.onrender.com/api/notes/64536276391b6c12d7a3aa3c
+
